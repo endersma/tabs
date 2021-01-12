@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import React, { useState } from 'react';
+import Tabs from './components/Tabs';
+import Display from './components/Display';
 
 function App() {
+
+  const [tabName, setTabName] = useState({
+    content: [
+      "Tab 1", 
+      "Tab 2", 
+      "Tab 3"
+    ],
+    selectedTab: 0,
+  });
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container mt-4">
+      <div className="row">
+        <Tabs 
+          tabName={tabName}
+          setTabName={setTabName}
+        />
+      </div>
+      <div className="row">
+        <Display 
+          tabName={tabName}
+        />
+      </div>
     </div>
   );
 }
